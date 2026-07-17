@@ -6,12 +6,12 @@ try {
 } catch {}
 
 export default defineConfig({
-	testTimeout: 60000,
-	maxConcurrency: 3,
-	scoreThreshold: 75,
-	hideTable: false,
+	testTimeout: 60000, // 60 seconds
+	maxConcurrency: 3, // 3 concurrent tests
+	scoreThreshold: 75, // 75% score to pass
+	hideTable: false, // show table in results
 	server: {
-		port: 3006,
+		port: 3006, // port for server
 	},
-	storage: () => createSqliteStorage('./evalite.db'),
+	storage: () => createSqliteStorage('./evalite.db'), // sqlite database for results
 });

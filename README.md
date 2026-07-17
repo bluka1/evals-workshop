@@ -4,10 +4,14 @@ Starter repo za 30-minutnu hands-on radionicu.
 
 [Evalite](https://www.evalite.dev/) je TypeScript-native, local-first alat za testiranje LLM aplikacija, izgrađen na Vitestu. Rezultati se spremaju u lokalni SQLite, a UI je dostupan na `http://localhost:3006`.
 
-Repo sadrži samo konfiguraciju i provider. Eval datoteke (`evals/`, `scorers/`) sudionici pišu tijekom radionice; gotova verzija nalazi se na `final` branchu.
+Repo sadrži konfiguraciju, provider te skeleton evala s jednim scorerom. Tijekom radionice sudionici dodaju preostale scorere (`isJson`, `schemaValid`, `llmRubric`) i iteriraju prompt; gotova verzija nalazi se na `final` branchu.
 
 - `evalite.config.ts` — konfiguracija (timeout, concurrency, score threshold, storage, UI port)
 - `provider.ts` — konfiguracija modela (Ollama lokalni / Anthropic), jednostavno prebacivanje
+- `evals/shared.ts` — `SYSTEM_PROMPT`, `TESTOVI` (8 test caseova), `TestCase` tip
+- `evals/trijaza.eval.ts` — definicija evala: `task` (poziv modela) + registrirani scorers
+- `scorers/fields.ts` — `fieldsMatch` scorer (usporedba izlaznih polja s očekivanjima)
+- `scorers/types.ts` — dijeljeni tipovi (`Expected`, `EmailInput`)
 
 ---
 
@@ -28,8 +32,6 @@ Model se poziva preko lokalnog Ollama servera na `http://localhost:11434` — ne
 ---
 
 ## 2. Pokretanje evala
-
-Nakon što napišeš `*.eval.ts` datoteke u `evals/`:
 
 ```bash
 npm run eval                                          # svi testovi (jednom, CI mode)
