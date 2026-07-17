@@ -27,6 +27,9 @@ npm install
 #   ollama pull gemma3                        # povuci model (~3.3 GB, jednom)
 ```
 
+- Ollama download: <https://ollama.com/>
+- Model `gemma3:latest`: <https://ollama.com/library/gemma3:latest>
+
 Model se poziva preko lokalnog Ollama servera na `http://localhost:11434` — nema API ključeva ni troškova, radi offline. (Za Anthropic umjesto Ollame: odkomentiraj `anthropic` linije u `provider.ts` i upiši `ANTHROPIC_API_KEY` u `.env`.)
 
 ---
